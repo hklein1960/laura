@@ -1,6 +1,6 @@
 package demo;
 
-import java.io.IOException;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
@@ -15,6 +15,7 @@ import javax.enterprise.event.Observes;
 import javax.enterprise.event.Reception;
 import javax.enterprise.inject.Produces;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -23,6 +24,8 @@ import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+
+
 
 import demo.PersEntity;
 
@@ -35,7 +38,7 @@ public class PersBack implements Serializable {
  
   @EJB
   private PersRepository persRepository;
- 
+  
  
   private final static Logger LOGGER = Logger.getLogger(PersBack.class.getSimpleName());
   @Produces
@@ -109,8 +112,9 @@ public PersBack() {
       PersEntity entity = new PersEntity(nachname,vorname,plz,ort,strasse);
       persRepository.save(entity);
       LOGGER.log(Level.INFO, "Saved user.");
-      redirect = "/success?faces-redirect=true";
       retrieveAllMembersOrderedByName();
+      redirect = "/success?faces-redirect=true";
+      
     }
  
     return redirect;
@@ -128,17 +132,18 @@ public PersBack() {
     this.ort = ort;
   }
  
-
+  
   public void retrieveAllMembersOrderedByName() {
       this.members = persRepository.findAllOrderedByName();
-      /*ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-      try {
-		ec.redirect("");
+      
+      
+   /*   try {
+    	  FacesContext.getCurrentInstance().getExternalContext().redirect("");
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}*/
-      
+	}
+      */
     
   }
 

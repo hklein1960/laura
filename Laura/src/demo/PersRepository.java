@@ -35,4 +35,7 @@ public class PersRepository {
       criteria.select(member).orderBy(cb.asc(member.get("nachname")));
       return em.createQuery(criteria).getResultList();
   }
+  public PersEntity findById(Long id) {
+      return em.find(PersEntity.class, id);
+  }
 }
