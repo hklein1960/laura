@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
 import javax.validation.ConstraintViolation;
@@ -28,6 +29,7 @@ import demo.PersEntity;
 
 
 @Path("/person")
+@RequestScoped
 public class PersonResourceREST {
 	@Inject
     private Logger log;
