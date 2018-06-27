@@ -31,8 +31,7 @@ import demo.PersEntity;
 @Path("/person")
 @RequestScoped
 public class PersonResourceREST {
-	@Inject
-    private Logger log;
+	
 
 	@Inject
     private PersBack persback;
@@ -50,7 +49,7 @@ public class PersonResourceREST {
     @GET
     @Path("/{id:[0-9][0-9]*}")
     @Produces(MediaType.APPLICATION_JSON)
-    public PersEntity lookupMemberById(@PathParam("id") long id) {
+    public PersEntity lookupMemberById(@PathParam("id") Integer id) {
         PersEntity person = persrepository.findById(id);
         if (person == null) {
             throw new WebApplicationException(Response.Status.NOT_FOUND);

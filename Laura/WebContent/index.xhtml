@@ -86,7 +86,15 @@
                 <f:facet name="header">Strasse</f:facet>
                 #{_member.strasse}
             </h:column>
-            
+            <h:column>
+                <f:facet name="header">REST URL</f:facet>
+                <a
+                    href="#{request.contextPath}/person/person/#{_member.id}">/person/person/#{_member.id}</a>
+            </h:column>
+            <f:facet name="footer">
+            REST URL for all members: <a
+                    href="#{request.contextPath}/person/person">/person/person</a>
+            </f:facet>
         </h:dataTable>
         
         

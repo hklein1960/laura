@@ -137,13 +137,7 @@ public PersBack() {
       this.members = persRepository.findAllOrderedByName();
       
       
-   /*   try {
-    	  FacesContext.getCurrentInstance().getExternalContext().redirect("");
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-      */
+   
     
   }
 
