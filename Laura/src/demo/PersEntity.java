@@ -10,6 +10,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
  
+
+
 @Entity
 @Table(name = "PERSON")
 
@@ -19,6 +21,7 @@ public class PersEntity implements Serializable {
   private Integer id;
  
  
+  
   private String nachname;
   private String vorname;
   private String plz;
