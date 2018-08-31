@@ -1,6 +1,8 @@
 package demo;
 
 import java.io.Serializable;
+import java.util.PriorityQueue;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,6 +26,7 @@ public class PersEntity implements Serializable {
   private String plz;
   private String ort;
   private String strasse;
+  
   public String getNachname() {
 	return nachname;
 }
@@ -31,7 +34,6 @@ public class PersEntity implements Serializable {
 public void setNachname(String nachname) {
 	this.nachname = nachname;
 }
-
 public String getVorname() {
 	return vorname;
 }

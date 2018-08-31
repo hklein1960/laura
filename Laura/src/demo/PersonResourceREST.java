@@ -28,6 +28,8 @@ import demo.PersRepository;
 import demo.PersEntity;
 
 
+
+
 @Path("/person")
 @RequestScoped
 public class PersonResourceREST {
@@ -57,39 +59,7 @@ public class PersonResourceREST {
         return person;
     }
 
-    /**
-     * Creates a new member from the values provided. Performs validation, and will return a JAX-RS response with either 200 ok,
-     * or with a map of fields, and related errors.
-     */
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response createPerson(PersEntity person) {
-
-        Response.ResponseBuilder builder = null;
-
-        try {
-            // Validates member using bean validation
-           
-
-            persback.submit();
-
-            // Create an "ok" response
-            builder = Response.ok();
-        } catch (ConstraintViolationException ce) {
-            // Handle bean validation issues
-           
-        } catch (ValidationException e) {
-            // Handle the unique constrain violation
-            
-        } catch (Exception e) {
-            // Handle generic exceptions
-            
-        }
-
-        return builder.build();
-    }
-
+    
     
 
     
