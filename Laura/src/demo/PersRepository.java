@@ -13,6 +13,9 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 
+
+
+
  
 @Stateless
 public class PersRepository {
