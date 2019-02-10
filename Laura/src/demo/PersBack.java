@@ -135,7 +135,7 @@ public PersBack() {
   
   public void retrieveAllMembersOrderedByName() {
       this.members = persRepository.findAllOrderedByName();
-      
+       
       
    
     

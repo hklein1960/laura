@@ -89,6 +89,7 @@ public void setStrasse(String strasse) {
     return ort;
   }
  
+  
   public void setOrt(String ort) {
     this.ort = ort;
   }
