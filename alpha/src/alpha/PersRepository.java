@@ -2,6 +2,7 @@ package alpha;
 
 import java.util.List;
 
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -22,6 +23,21 @@ public class PersRepository {
   
   EntityManager em;
  
+  public void save(PersEntity user) {
+	    em.persist(user);
+	    em.flush();
+	  }
+	  public List<PersEntity> findAllOrderedByName() {
+	      CriteriaBuilder cb = em.getCriteriaBuilder();
+	      CriteriaQuery<PersEntity> criteria = cb.createQuery(PersEntity.class);
+	      Root<PersEntity> member = criteria.from(PersEntity.class);
+	      
+	      criteria.select(member).orderBy(cb.asc(member.get("nachname")));
+	      return em.createQuery(criteria).getResultList();
+	  }
+	  public PersEntity findById(Integer id) {
+	      return em.find(PersEntity.class, id);
+	  }
   public PersRepository() {
   }
  

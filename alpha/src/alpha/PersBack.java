@@ -2,6 +2,7 @@ package alpha;
 
 import java.io.Serializable;
 
+
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,11 +37,16 @@ import alpha.PersEntity;
 public class PersBack implements Serializable {
  
   
-  
+
+	 @EJB
+	 private PersRepository persRepository;
  
   private final static Logger LOGGER = Logger.getLogger(PersBack.class.getSimpleName());
   
+  @Produces
+  private List<PersEntity> members;
   @NotNull
+  
   
   private static String nachname="PAPI";
   private String vorname;
@@ -80,11 +86,61 @@ public void setStrasse(String strasse) {
 	this.strasse = strasse;
 }
 
+public String getOrt() {
+    return ort;
+  }
+ 
+  public void setOrt(String ort) {
+    this.ort = ort;
+  }
+  
+  public void retrieveAllMembersOrderedByName() {
+      this.members = persRepository.findAllOrderedByName();
+       
+  }
+  
+  
+  public List<PersEntity> getMembers() {
+		return members;
+	}
+
+	public void setMembers(List<PersEntity> members) {
+		this.members = members;
+	}
 
 public PersBack() {
   }
       
-   
+public String submit() {
+    String redirect = "/error?faces-redirect=true";
+ 
+    String template = "Nachname: {0}, Vorname: {1}, PLZ:{2},Ort: {3}, Strasse{4}";
+    Object[] values = new Object[]{
+      this.nachname,
+      this.vorname,
+      this.plz,
+      this.ort,
+      this.strasse
+    };
+    LOGGER.log(Level.INFO, template, values);
+ 
+    boolean isValid = validate();
+    if (isValid) {
+      PersEntity entity = new PersEntity(nachname,vorname,plz,ort,strasse);
+      persRepository.save(entity);
+      LOGGER.log(Level.INFO, "Saved user.");
+      retrieveAllMembersOrderedByName();
+      redirect = "/success?faces-redirect=true";
+      
+    }
+ 
+    return redirect;
+  }
+ 
+  public boolean validate() {
+    //*return nachname.length() > 1 && vorname.length() > 1 && plz.length() > 1 && ort.length() > 1 && strasse.length() > 1;
+	  return true;
+  } 
     
   }
 
