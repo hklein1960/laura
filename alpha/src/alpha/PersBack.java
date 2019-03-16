@@ -48,14 +48,14 @@ public class PersBack implements Serializable {
   @NotNull
   
   
-  private static String nachname="PAPI";
+  private static String nachname;
   private String vorname;
   private String plz;
   private String ort;
   private String strasse;
  
   public String getNachname() {
-	return "PAPI";
+	return nachname;
 }
 
 public void setNachname(String nachname) {
