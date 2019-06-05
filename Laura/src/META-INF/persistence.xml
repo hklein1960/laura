@@ -5,20 +5,18 @@
 
 <persistence-unit transaction-type="JTA" name="Laura">
 
-<jta-data-source>java:/MyDerbyDS</jta-data-source>
+<jta-data-source>java:/PostgresDS</jta-data-source>
 
 <class>demo.PersEntity</class>
 
 
 <properties>
-
 <!--s <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/> -->
 
 
-<property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/>
+<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
 
 <property name="hibernate.hbm2ddl.auto" value="none"/>
-
 </properties>
 
 </persistence-unit>
