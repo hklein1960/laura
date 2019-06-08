@@ -142,6 +142,8 @@ public String submit() {
     //*return nachname.length() > 1 && vorname.length() > 1 && plz.length() > 1 && ort.length() > 1 && strasse.length() > 1;
 	  return true;
   } 
-    
+    public String getString() {
+    	return "Hie12r";
+    }
   }
 
